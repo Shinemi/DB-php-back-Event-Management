@@ -10,7 +10,7 @@ require_once "./config/connect.php";
 include "./header.php";
 
 
-$req = "SELECT e.title_event, e.description_event, e.date_event, e.place_event
+$req = "SELECT e.title_event, e.description_event, e.date_event, e.place_event, e.id_event
         FROM events e
         INNER JOIN events_has_users ehu ON ehu.fk_id_event = e.id_event
         WHERE ehu.fk_id_user = :idUser
@@ -43,6 +43,7 @@ $mesInscriptions = $data->fetchAll();
             <p><?= $inscription['date_event'] ?></p>
             <p><?= $inscription['place_event'] ?></p>
             <p><?= $inscription['description_event'] ?></p>
+            <a href="event_unbook.php?id=<?= $inscription['id_event'] ?>"><button>Annuler mon inscription</button></a>
         </article>
     <?php endforeach; ?>
 <?php endif; ?>

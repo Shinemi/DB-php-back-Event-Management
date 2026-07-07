@@ -13,6 +13,7 @@
                 <li><a href="register.php">Inscription</a></li>
                 <li><a href="profile.php">Profil</a></li>
                 <li><a href="events.php">Evenements</a></li>
+                <li><a href="logout.php">Déconnexion</a></li>
             </ul>
         </nav>
     </header>
