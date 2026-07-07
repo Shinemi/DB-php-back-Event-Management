@@ -1,7 +1,13 @@
 <?php
 session_start();
-include "./header.php";
+
+if (!isset($_SESSION['idUser'])) {
+    header('Location: signin.php');
+    exit;
+}
+
 require_once "./config/connect.php";
+include "./header.php";
 
 $idEvent = $_GET['id'] ?? null;
 

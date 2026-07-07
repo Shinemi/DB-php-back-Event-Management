@@ -1,12 +1,17 @@
 <?php
 session_start();
-include "./header.php";
-if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
+
+if (!isset($_SESSION['idUser'])) {
+    header('Location: signin.php');
+    exit;
+}
+if ($_SESSION['role'] != 1) {
     header('Location: profile.php');
     exit;
 }
 
 require_once "./config/connect.php";
+include "./header.php";
 
 $req = "SELECT firstname_user, lastname_user, email_user, fk_id_role FROM users";
 $data = $db->prepare($req);

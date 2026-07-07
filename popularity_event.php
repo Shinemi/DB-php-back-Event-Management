@@ -1,13 +1,17 @@
 <?php
 session_start();
-include "./header.php";
 
-if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
+if (!isset($_SESSION['idUser'])) {
+    header('Location: signin.php');
+    exit;
+}
+if ($_SESSION['role'] != 1) {
     header('Location: events.php');
     exit;
 }
 
 require_once "./config/connect.php";
+include "./header.php";
 
 $req = "SELECT e.title_event, COUNT(ehu.fk_id_user) AS nb_participants
         FROM events e

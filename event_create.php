@@ -1,11 +1,17 @@
 <?php
 session_start();
-include "./header.php";
 
-if (!isset($_SESSION['role']) || $_SESSION['role'] != 2) {
+if (!isset($_SESSION['idUser'])) {
+    header('Location: signin.php');
+    exit;
+}
+if ($_SESSION['role'] != 2) {
     header('Location: events.php');
     exit;
 }
+
+require_once "./config/connect.php";
+include "./header.php";
 
 $message = "";
 
