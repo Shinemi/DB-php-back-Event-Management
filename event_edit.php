@@ -1,6 +1,6 @@
 <?php
-include "./header.php";
 session_start();
+include "./header.php";
 require_once "./config/connect.php";
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 2) {

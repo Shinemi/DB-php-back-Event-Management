@@ -1,6 +1,6 @@
 <?php
-include "./header.php";
 session_start();
+include "./header.php";
 require_once "./config/connect.php";
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 2) {
@@ -39,16 +39,12 @@ $participants = $dataParticipants->fetchAll();
 <?php if (count($participants) === 0): ?>
     <p>Aucun participant inscrit pour l'instant.</p>
     <?php else: ?>
-        <?php if (count($participants) === 0): ?>
-        <p>Aucun participant inscrit pour l'instant.</p>
-    <?php else: ?>
         <ul>
             <?php foreach ($participants as $participant): ?>
                 <li><?= $participant['firstname_user'] ?> <?= $participant['lastname_user'] ?> - <?= $participant['email_user'] ?></li>
             <?php endforeach; ?>
         </ul>
     <?php endif; ?>
-<?php endif; ?>
 
 <a href="./events.php">Retour aux evenements</a>
 </body>

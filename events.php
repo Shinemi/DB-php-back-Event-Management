@@ -1,6 +1,6 @@
 <?php
+    session_start();
     include "./header.php";
-    session_start()
 ?>
 
 
@@ -29,10 +29,9 @@
             <p><?= $event['place_event']  ?></p>
             <p><?= $event['description_event']  ?></p>
             <?php 
-                if ($_SESSION['role'] == 2){
-                ?>
-                    <a href="event_booking.php?id=<?= $event['id_event'] ?>"><button>modifier</button></a>
-                <?php
+                if ($_SESSION['role'] == 2 && $_SESSION['idUser'] == $event['fk_id_user']){
+                    ?><a href="event_edit.php?id=<?= $event['id_event'] ?>"><button>modifier</button></a><?php
+                }
                 }
                 if ($_SESSION['role'] == 2 && $_SESSION['idUser'] == $event['fk_id_user']){
                     ?>
@@ -43,7 +42,7 @@
             <a href="event_booking.php?id=<?= $event['id_event'] ?>"><button>s'inscrire</button></a>
         </article>
 
-    <?php }
+    <?php 
     
 
 

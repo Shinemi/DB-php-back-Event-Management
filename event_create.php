@@ -1,6 +1,6 @@
 <?php
-include "./header.php";
 session_start();
+include "./header.php";
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 2) {
     header('Location: events.php');
